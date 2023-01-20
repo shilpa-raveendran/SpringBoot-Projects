@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="/css/custom.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" 
+		crossorigin="anonymous"></script>
+
+<script>
+setInterval(function () {
+	$.get("currentcount", function( results ) {
+		$( "#count" ).html(results);
+	});
+}, 3000);
+</script>
+	<title>Save Employee</title>
+</head>
+
+<body>
+
+	<div class="container"  align="center">
+		
+		<h3>Save Employee</h3>
+		<hr>
+		<form action="#" th:action="@{/employees/saveUpdate}"
+						 th:object="${employee}" method="POST">
+		
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{empId}" />
+			
+			<input type="text" th:field="*{firstName}"
+					class="form-control mb-4 col-4" placeholder="First name">
+			 <span class="text-danger" th:if="${#fields.hasErrors('firstName')}" 
+			  		th:errors="*{firstName}"> </span>
+
+			<input type="text" th:field="*{lastName}"
+					class="form-control mb-4 col-4" placeholder="Last name">
+			 <span class="text-danger" th:if="${#fields.hasErrors('lastName')}" 
+			  		th:errors="*{lastName}"></span>
+
+			<input type="text" th:field="*{email}"
+					class="form-control mb-4 col-4" placeholder="Email">
+			<span class="text-danger" th:if="${#fields.hasErrors('email')}" 
+				  th:errors="*{email}"></span>
+			
+			<input type="text" th:field="*{department}"
+					class="form-control mb-4 col-4" placeholder="Department">
+			<span class="text-danger" th:if="${#fields.hasErrors('department')}" 
+				  th:errors="*{department}"> </span>
+					
+			<input type="text" th:field="*{salary}"
+					class="form-control mb-4 col-4" placeholder="Salary">
+			<span class="text-danger" th:if="${#fields.hasErrors('salary')}"
+				  th:errors="*{salary}"></span>
+				
+			<button type="submit" class="btn btn-info col-2">Save</button>
+						
+		</form>
+	
+		<hr>
+		<a th:href="@{/employees/listAll}">Back to Employees List</a>
+		<div id="pageCountDiv">
+			<h6>Visitors Count <span id="count" class="badge badge-dark"  th:text="${currentPageCount}"></span></h6>
+		</div>
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

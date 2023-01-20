@@ -1,0 +1,41 @@
+@charset "ISO-8859-1";
+
+body {
+	 background-image: linear-gradient(to top, #df89b5 0%, #bfd9fe 100%); 
+	
+
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+	float: left;
+	width: 50%;
+	padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* styles for the Welcome page heading*/
+#emsHeadingH2 {
+	color: brown;
+	font-style: italic;
+	text-align: center;
+	font-size: 55px;
+}
+
+/* styles for the Welcome page show button*/
+#listEmps {
+	width: 143px;
+	margin: 16px 100%;
+	position: relative;
+	left: 220px;
+}
